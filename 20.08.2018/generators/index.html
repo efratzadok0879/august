@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let arr = [0, 0, 0, 0, 0];
+        let generator;
+        function callPromise(prevPromise, num, index) {
+            return prevPromise.then(() => new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        arr[index] = num = (generator.next().value);
+                        console.log(num);
+                        resolve();
+                    }, 1000)//timeOut has to be:1000*num
+            }));
+        }
+        function* gen(num) {
+            yield num
+            yield* gen(num ** 2);
+
+        }
+        function start() {
+            generator = gen(2);
+            arr.reduce(callPromise, new Promise((x, y) => { x() }))
+            console.log(arr);
+        }
+
+        start();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
