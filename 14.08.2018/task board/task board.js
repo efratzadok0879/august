@@ -49,7 +49,7 @@ function addTask() {
         document.getElementById(key).value = "";
     }
     let currentList = getCurrentList();
-    newTask.id = currentList.length;
+    newTask.id =currentList.length==0?0: Math.max(...currentList.map(task=>task.id))+1;
     currentList.push(newTask);
     localStorage.setItem("taskList", JSON.stringify(currentList));
     showCurrentList('fadeLast');
@@ -86,7 +86,7 @@ function changeTasksOrder() {
         newList.push(task);
     });
     localStorage.setItem("taskList", JSON.stringify(newList));
-    alert("changed Successfully")
+    console.log("changed Successfully")
 }
 
 function checkDatetimeValidation(value) {
