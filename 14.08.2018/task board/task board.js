@@ -49,7 +49,7 @@ function addTask() {
         document.getElementById(key).value = "";
     }
     let currentList = getCurrentList();
-    newTask.id = currentList.length;
+    newTask.id =Math.max(...currentList.map(task=>task.id))+1;
     currentList.push(newTask);
     localStorage.setItem("taskList", JSON.stringify(currentList));
     showCurrentList('fadeLast');
