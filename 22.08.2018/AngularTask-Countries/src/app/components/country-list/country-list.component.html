@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngIf="countries">
+    <app-search (termEvent)="termChanged($event)"></app-search>
+    <ul>
+      <li class="row">
+        <span class="col-md-2">Name</span>
+        <span class="col-md-2">Native Name</span>
+        <span class="col-md-2">Capital</span>
+        <span class="col-md-2">Population</span>
+        <span>Flag</span>
+      </li>
+      <app-country-item *ngFor="let country of countries|filter:term;let i=index" [country]="country" [index]="i"></app-country-item>
+    </ul>
+  </div>
+</div>

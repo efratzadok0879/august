@@ -1,0 +1,21 @@
+#container{
+    background-image: url("https://gweb-earth.storage.googleapis.com/assets/voyager-tiles@2x.jpg");
+    height: 100%;
+    padding: 15%;
+}
+#title{
+    color: white;
+    text-decoration: underline;
+
+
+}
+#icon-wrapper{
+    background-color: #2979FF;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: auto;
+}
+svg{
+    max-width: 50%;
+}

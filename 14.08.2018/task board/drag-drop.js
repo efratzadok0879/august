@@ -70,7 +70,7 @@ interact('.dropzone').dropzone({
     ondrop: function (event) {
         if (event.target.classList.contains('dropzone')) {
             event.target.appendChild(event.relatedTarget);
-
+            changeTasksOrder();
         }
 console.log(event.relatedTarget);
     },

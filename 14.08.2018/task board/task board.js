@@ -49,7 +49,11 @@ function addTask() {
         document.getElementById(key).value = "";
     }
     let currentList = getCurrentList();
+<<<<<<< HEAD
     newTask.id =Math.max(...currentList.map(task=>task.id))+1;
+=======
+    newTask.id =currentList.length==0?0: Math.max(...currentList.map(task=>task.id))+1;
+>>>>>>> bb5e4b171bd3f729da46899efd1e6597a4300e7c
     currentList.push(newTask);
     localStorage.setItem("taskList", JSON.stringify(currentList));
     showCurrentList('fadeLast');
@@ -86,7 +90,7 @@ function changeTasksOrder() {
         newList.push(task);
     });
     localStorage.setItem("taskList", JSON.stringify(newList));
-    alert("changed Successfully")
+    console.log("changed Successfully")
 }
 
 function checkDatetimeValidation(value) {

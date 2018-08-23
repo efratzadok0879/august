@@ -1,0 +1,17 @@
+ul{
+    background: #32383e;
+    border-radius: 10px;
+    color:white;
+    font-family: "Century Gothic";
+    font-size: 17px;
+    margin: 2%;
+}
+li{
+    list-style-type: none;  
+    padding: 3% 0;
+}
+span{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
