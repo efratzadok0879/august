@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="http://chir.ag/projects/ntc/ntc.js"></script>
+
+    <script>
+        let InputColor;
+        var totalTimes = 0;
+        var currColor;
+        onload = () => {
+            InputColor = document.getElementById("InputColor");
+            InputColor.addEventListener("change", func());
+
+        }
+        function func() {
+            return function () {
+                totalTimes++;                         
+                let n_match = ntc.name(InputColor.value);
+                let eventColor = n_match[1];
+                currColor=eventColor;
+                let eventIndex=totalTimes;
+                setTimeout(() => {
+                    alert(
+                    `total times: ${totalTimes}
+                    event Index: ${eventIndex}
+                    current color: ${currColor}
+                    event color: ${eventColor}`)
+                }, 10000);
+            };
+
+        }
+     
+    </script>
+</head>
+
+<body>
+    <input type="color" id="InputColor">
+</body>
+
+</html>
