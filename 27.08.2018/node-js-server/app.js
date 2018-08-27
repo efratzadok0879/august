@@ -1,38 +1,45 @@
-const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require('cors')
 
+var corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+}
+
+app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// const basePath = path.join(__dirname + "/dist");
-// fs.readdir(basePath, (err, files) => {
-//     files.forEach((file) => {
-//         app.use(express.static(`${basePath}/${file}`));
-//         app.get(`/${file}`, (req, res) => {
-//             res.sendFile(`${basePath}/${file}/index.html`);
-//         });
-//     })
-// });
 // //curl -v -X POST -H "Content-type: application/json" –d "{\"id\":\"207138132\"}" http://localhost:3500/api/user
 //user{id,age,name,isMale,country}
-
 //curl -X POST http://localhost:3500/api/user
-app.post("/api/user", (req, res) => {
+app.post("/api/addUser", (req, res) => {
+    console.log(req.body);
     if (isValidUser(req.body)) {
         console.log(req.body);
         let cuurentList = require("./user.json");
         console.log(cuurentList);
         cuurentList.push(req.body);
         fs.writeFileSync("user.json", JSON.stringify(cuurentList));
-        res.status(201).send("good");
+        res.status(201).send({ message: 'Created' });
     }
     else{
         console.log("bad");
         res.status(400);
     }
+   
+})
+app.param(['fileName'], function (req, res, next, value) {
+    console.log(value);
+    next();
+  });
+app.get("/api/getList", (req, res) => {
+    let fileName=req.param('fileName')
+    let List=require(`./${fileName}.json`);
+    res.status(201).send(JSON.stringify(List));
    
 })
 isValidUser = (user) => {

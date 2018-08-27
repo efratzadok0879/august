@@ -6,7 +6,9 @@ import{HttpClientModule} from '@angular/common/http';
 import {
   AppComponent,
   RegisterComponent,
-  UserService
+  UserListComponent,
+  UserService,
+  CountryService
 } from './imports';
 
 
@@ -14,14 +16,15 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

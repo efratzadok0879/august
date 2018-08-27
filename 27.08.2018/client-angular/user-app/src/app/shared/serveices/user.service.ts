@@ -8,10 +8,31 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
+  basicURL = "http://localhost:3500/api";
+  userList: User[];
+  getAllUsers(setUserList: (res) => void): void {
+    let url: string = this.basicURL + "/getList?fileName=user";
+    this.httpClient.get<any[]>(url)
+      .subscribe(res => {
+        this.userList = res;
+        setUserList(this.userList);
+      });
 
-  addUser(user:User):Observable<any>{
-    let url:string="";
-    return this.httpClient.post<User>(url,user);
   }
+
+  addUser(user: User): void {
+    let url: string = this.basicURL + "/addUser";
+    this.httpClient.post<User>(url, user)
+      .subscribe(res => {
+        console.log("shalom");
+        console.log(res);
+        this.userList.push(user);
+      },
+      err=>{
+        console.log("error");
+        console.log(err);
+      })
+  }
+
 }
