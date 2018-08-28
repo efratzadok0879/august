@@ -1,9 +1,25 @@
-<ul>
-  <li *ngFor="let user of userList">
-    <span>id: {{user.id}}</span>
-    <span>age: {{user.age}}</span>
-    <span>name: {{user.name}}</span>
-    <span>isMale: {{user.isMale}}</span>
-    <span>country: {{user.country}}</span>
-  </li>
-</ul>
+<div id="userList">
+  <div class="scrollbar">
+    <div id="force-overflow">
+        <div id="header">
+            <div class="thumbur">
+             <img src="../../../assets/family-silhouette.png"/>
+            </div>
+            <h2>USERS</h2>
+            <hr>
+          </div>
+      <ul>
+        <ng-container *ngFor="let user of userList">
+          <li class="row">
+            <span class="col-md-3"><b>id:</b> {{user.id}} </span>
+            <span class="col-md-1"><b>age:</b> {{user.age}} </span>
+            <span class="col-md-3"><b>name:</b> {{user.name}} </span>
+            <span class="col-md-2"><b>isMale:</b> {{user.isMale}} </span>
+            <span class="col-md-3"><b>country:</b> {{user.country}} </span>
+          </li>
+          <hr>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>

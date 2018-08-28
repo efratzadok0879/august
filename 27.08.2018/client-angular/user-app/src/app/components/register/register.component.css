@@ -1,11 +1,248 @@
+/*==============================  form  ==============================*/
+
+.box{
+    background-color: white;
+    border-radius: 25px;
+    height: 100%;
+    width: 40%;
+    margin: auto;
+    float: left;
+    padding: 3% 0;
+}
+#header{
+    text-align: center;
+}
+
+
+#form {
+    overflow: auto;
+    height: 280px;
+}
+
+/*==============================icon-lock==============================*/
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+
+
+.thumbur {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    background-color: #efefef;
+    *zoom: 1;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#FFEFEFEF', endColorstr='#FFE1E1E1');
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZWZlZmVmIi8+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNlMWUxZTEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMWUxZTEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+    background-size: 100%;
+    background-image: linear-gradient(to right, #efefef 0%, #efefef 50%, #e1e1e1 50%, #e1e1e1 100%);
+    margin: auto;
+    border-radius: 100%;
+}
+
+    .thumbur:before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 12px;
+        background-color: #efefef;
+        left: 50%;
+        bottom: 22px;
+        z-index: 5;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-bottom-left-radius: 1px;
+        border-bottom-right-radius: 1px;
+    }
+
+.icon-lock {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    background: #be36f7;
+    margin: auto;
+    -webkit-transform: translateY(60px);
+    transform: translateY(60px);
+    border-radius: 8px;
+    box-shadow: 0 0 2px #be36f7 inset;
+    bottom: 30px;
+}
+
+    .icon-lock:after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 17px;
+        border: 4.5px solid #be36f7;
+        border-bottom: none;
+        bottom: 100%;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
+
+    .icon-lock:before {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background-color: #efefef;
+        left: 50%;
+        top: 11px;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-radius: 100%;
+    }
+
+/* =======================end-icon-lock======================= */
+
+/* =======================    inputs   ======================= */
+.group {
+    position: relative;
+    
+    text-align: left;
+    width: 75%;
+    margin:auto;
+    margin-bottom: 40px;
+
+}
+
+.inputMaterial {
+    font-size: 18px !important;
+    display: block;
+    width: 100%;
+    border: none !important;
+    border-bottom: 1px solid #757575 !important;
+    font-family: "Segoe UI" !important;
+    background: none !important;
+    height: 32px;
+}
+
+
+.inputMaterial:focus {
+    outline: none;
+}
+/* =======================  end-inputs  ======================= */
+
+/* =======================    labels   ======================= */
+.label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 6px;
+    font-family: "Segoe UI" !important;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+    width: 100%;
+    text-align: left;
+}
+
+    /* active state */
+    .inputMaterial:focus ~ .label, .label.full {
+        top: -20px;
+        font-size: 14px;
+        color: #c718e1;
+    }
+/* =======================  end-labels  ======================= */
+
+/* =======================  buttom-bar  ======================= */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #c718e1;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 50%;
+    }
+
+    .bar:after {
+        right: 50%;
+    }
+
+/* active state */
+.inputMaterial:focus ~ .bar:before, .inputMaterial:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* active state */
+.inputMaterial:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ======================= end-buttom-bar ======================= */
+
+/* =======================  animations  ======================= */
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+
+/* ======================= end-animations ======================= */
+
+/* =======================     checkbox   ======================= */
+
 input[type="checkbox"]{
     -webkit-appearance: initial;
     appearance: initial;
     width: 20px;
     height: 20px;
-    border: solid;
+    border: solid 2px gray;
     border-radius: 6px;
     position: relative;
+    top: 10px;
+    left: 18%;
 }
 input[type="checkbox"]:after {
     /* color: #fff; */
@@ -31,4 +268,88 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked::after {
     content: "V";
 }
+/* =======================   end-checkbox ======================= */
+/* =======================   validations  ======================= */
 
+
+
+.myAlert {
+    color: #f62d3ffa;
+    width: 300px;
+}
+/* =======================  end-validations ======================= */
+
+/* =======================   button-submit  ======================= */
+
+.container-login100-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: none;
+}
+
+.wrap-login100-form-btn {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 0 auto;
+
+  box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
+  -moz-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
+  -webkit-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
+  -o-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
+  -ms-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
+}
+
+.login100-form-bgbtn {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: #be36f7;
+  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  top: 0;
+  left: -100%;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn {
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+}
+
+.wrap-login100-form-btn:hover .login100-form-bgbtn {
+  left: 0;
+}
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+/* ======================= end-button-submit ======================= */

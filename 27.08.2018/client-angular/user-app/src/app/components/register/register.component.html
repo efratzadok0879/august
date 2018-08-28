@@ -1,49 +1,82 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Id:</label>
-    <input type="text" formControlName="id" required minlength="9" maxlength="9" pattern="[0-9]+">
-    <div *ngIf="id.invalid && (id.dirty || id.touched || submitted)" class="alert alert-danger">
-      <div *ngIf="id.errors.required">Id is required.</div>
-      <div *ngIf="id.errors.minlength || id.errors.maxlength">Id must be 9 characters long.</div>
-      <div *ngIf="id.errors.pattern">Id must contain only digits</div>
-      <div *ngIf="id.errors.validId">Id is not exist</div>
+<div class="box">
+  <div id="header">
+    <div class="thumbur">
+      <div class="icon-lock"></div>
     </div>
+    <h2>REGISTER</h2>
+    <hr>
   </div>
-  <div>
-    <label>Name:</label>
-    <input type="text" formControlName="name" required minlength="3" maxlength="15" pattern="[a-zA-Zא-ת]+">
-    <div *ngIf="name.invalid && (name.dirty || name.touched || submitted)" class="alert alert-danger">
-      <div *ngIf="name.errors.required">Name is required.</div>
-      <div *ngIf="name.errors.minlength">Name must be at least 3 characters long.</div>
-      <div *ngIf="name.errors.maxlength">Name must be maximum 15 characters long.</div>
-      <div *ngIf="name.errors.pattern">Name must contain only letters</div>
-    </div>
-  </div>
-  <div>
-    <label>Age:</label>
-    <input type="number" formControlName="age" required min="0" max="120">
-    <div *ngIf="age.invalid && (age.dirty || age.touched || submitted)" class="alert alert-danger">
-      <div *ngIf="age.errors.required">Age is required.</div>
-      <div *ngIf="age.errors.min">Age must be greater or equals to 0</div>
-      <div *ngIf="age.errors.max">Age must be less than or equals to 120</div>
-    </div>
-  </div>
-  <div>
-    <input type="checkbox" formControlName="isMale"/>
-    <label for="demo_box_2" name="demo_lbl_2" class="css-label">Is Male:</label>
-    <div class="alert alert-danger">
-      <div *ngIf="!isMale.dirty && submitted">IsMale is required.</div>
-    </div>
-  </div>
-  <div>
-    <label>Country:</label>
-    <select formControlName="country" required>
-      <option *ngFor="let country of countries">{{country}}</option>
-    </select>
-    <div *ngIf="country.invalid && (country.dirty || country.touched || submitted)" class="alert alert-danger">
-      <div *ngIf="country.errors.required">Country is required.</div>
-    </div>
-  </div>
-  <button type="submit">Submit</button>
 
-</form>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="group">
+      <input type="text" class="inputMaterial" formControlName="id" required minlength="9" maxlength="9" pattern="[0-9]+">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label [ngClass]="{'label':true,'full':id.value!=''}">Id:</label>
+      <div *ngIf="id.invalid && ( id.touched || submitted )" class="myAlert">
+        <div *ngIf="id.errors.required">Id is required.</div>
+        <div *ngIf="id.errors.minlength || id.errors.maxlength">Id must be 9 characters long.</div>
+        <div *ngIf="id.errors.pattern">Id must contain only digits</div>
+        <div *ngIf="id.errors.validId">Id is not exist</div>
+      </div>
+    </div>
+
+    <div class="group">
+      <input type="text" class="inputMaterial" formControlName="name" required minlength="3" maxlength="15" pattern="[a-zA-Zא-ת]+">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label [ngClass]="{'label':true,'full':name.value!=''}">Name:</label>
+      <div *ngIf="name.invalid && ( name.touched || submitted )" class="myAlert">
+        <div *ngIf="name.errors.required">Name is required.</div>
+        <div *ngIf="name.errors.minlength">Name must be at least 3 characters long.</div>
+        <div *ngIf="name.errors.maxlength">Name must be maximum 15 characters long.</div>
+        <div *ngIf="name.errors.pattern">Name must contain only letters</div>
+      </div>
+    </div>
+
+    <div class="group">
+      <input type="number" class="inputMaterial" formControlName="age" required [min]="0" [max]="120">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label [ngClass]="{'label':true,'full':age.value!=''}">Age:</label>
+      <div *ngIf="age.invalid && ( age.touched || submitted )" class="myAlert">
+        <div *ngIf="age.errors.required">Age is required.</div>
+        <div *ngIf="age.errors.min">Age must be greater or equals to 0</div>
+        <div *ngIf="age.errors.max">Age must be less than or equals to 120</div>
+      </div>
+    </div>
+
+    <div class="group">
+      <input list="countries" class="inputMaterial" formControlName="country" required>
+      <datalist id="countries">
+        <option *ngFor="let country of countries">{{country}}</option>
+      </datalist>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label [ngClass]="{'label':true,'full':country.value!=''}">Country:</label>
+      <div *ngIf="country.invalid && ( country.touched || submitted )" class="myAlert">
+        <div *ngIf="country.errors.required">Country is required.</div>
+        <div *ngIf="country.errors.validCountry">Country is not exist</div> 
+      </div>
+    </div>
+
+    <div class="group">
+        <label for="demo_box_2" name="demo_lbl_2" class="css-label label">Is Male:</label>
+        <input type="checkbox" formControlName="isMale" />
+        <div class="myAlert">
+          <div *ngIf="!isMale.dirty && submitted">IsMale is required.</div>
+        </div>
+      </div>
+    <div class="group">
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <button type="submit" class="login100-form-btn">
+            SEND
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
