@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User, ValidateId, UserService, CountryService } from '../../imports';
+import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { User, ValidateId, ValidateCountry, UserService, CountryService } from '../../imports';
 
 @Component({
   selector: 'app-register',
@@ -10,18 +10,19 @@ import { User, ValidateId, UserService, CountryService } from '../../imports';
 export class RegisterComponent implements OnInit {
 
   user: User;
-  countries: string[];
+  countries: string[] = [];
   registerForm: FormGroup;
   submitted: boolean = false;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private countryService: CountryService) {
-    this.countries = [];
-    this.registerForm = this.formBuilder.group({
-      id: ['', ValidateId],
-      name: [],
-      age: [],
-      isMale: [],
-      country: []
-    });
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private countryService: CountryService) { }
+  
+  ngOnInit() {
+    this.countryService.getAllCountries()
+      .subscribe(
+        res => this.countries = res,
+        err => console.log(err));
+    this.registerForm = this.createForm();
+
   }
   onSubmit() {
     this.submitted = true;
@@ -29,14 +30,27 @@ export class RegisterComponent implements OnInit {
       this.user = JSON.parse(JSON.stringify(this.registerForm.value));
       console.warn(this.user);
       this.userService.addUser(this.user);
+      this.registerForm = this.createForm();
+      this.reset();
+      this.submitted = false;
     }
   }
-  ngOnInit() {
-    this.countryService.getAllCountries()
-      .subscribe(
-        res => this.countries = res,
-        err => console.log(err));
+  createForm(): FormGroup {
+    return this.formBuilder.group({
+      id: ['', ValidateId],
+      name: [''],
+      age: [''],
+      isMale: [''],
+      country: ['',ValidateCountry.createValidator(this.countries)]
+    });
   }
+  reset() {
+    for (let name in this.registerForm.controls) {
+      this.registerForm.controls[name].setValue('');
+      this.registerForm.controls[name].setErrors(null);
+    }
+  }
+
 
   get name() {
     return this.registerForm.get('name');
@@ -54,6 +68,14 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get("country");
   }
 
+  ValidateCountry(control: AbstractControl) {
 
+    let country = control.value;
+    if (country!= undefined && country != null) {         
+            if(this.countries.indexOf(country))
+            return { validCountry: true };
+    }
+    return null;
+}
 
 }

@@ -7,6 +7,8 @@ export{CountryService} from './shared/serveices/country.service';
 
 //validators
 export {ValidateId} from './shared/validators/id.validator';
+export {ValidateCountry} from './shared/validators/country.validator';
+
 
 //components
 export { AppComponent } from './app.component';

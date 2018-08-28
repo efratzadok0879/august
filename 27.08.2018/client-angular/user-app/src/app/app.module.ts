@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import{HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomFormsModule } from 'ng2-validation'
+
 
 import {
   AppComponent,
@@ -22,9 +24,10 @@ import {
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomFormsModule
   ],
-  providers: [UserService,CountryService],
+  providers: [UserService, CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
