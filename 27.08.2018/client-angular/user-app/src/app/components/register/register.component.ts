@@ -19,9 +19,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.countryService.getAllCountries()
       .subscribe(
-        res => this.countries = res,
-        err => console.log(err));
-    this.registerForm = this.createForm();
+        res => {
+          this.countries = res;
+          this.registerForm = this.createForm();
+        },
+        err => console.log(err));    
 
   }
   onSubmit() {

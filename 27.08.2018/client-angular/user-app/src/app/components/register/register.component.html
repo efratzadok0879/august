@@ -7,7 +7,7 @@
     <hr>
   </div>
 
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form *ngIf="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="group">
       <input type="text" class="inputMaterial" formControlName="id" required minlength="9" maxlength="9" pattern="[0-9]+">
       <span class="highlight"></span>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="group">
-      <input type="text" class="inputMaterial" formControlName="name" required minlength="3" maxlength="15" pattern="[a-zA-Zא-ת]+">
+      <input type="text" class="inputMaterial" formControlName="name" required minlength="3" maxlength="15" pattern="[a-zA-Zא-ת\s]+">
       <span class="highlight"></span>
       <span class="bar"></span>
       <label [ngClass]="{'label':true,'full':name.value!=''}">Name:</label>

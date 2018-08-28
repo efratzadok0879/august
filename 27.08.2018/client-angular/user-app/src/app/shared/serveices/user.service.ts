@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   constructor(private httpClient: HttpClient) { }
-  basicURL = "https://glacial-river-87258.herokuapp.com//api";
+  basicURL = "https://glacial-river-87258.herokuapp.com/api";
   userList: User[];
   getAllUsers(setUserList: (res) => void): void {
     let url: string = this.basicURL + "/getList?fileName=user";
