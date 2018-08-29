@@ -6,7 +6,6 @@
     <h2>REGISTER</h2>
     <hr>
   </div>
-
   <form *ngIf="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="group">
       <input type="text" class="inputMaterial" formControlName="id" required minlength="9" maxlength="9" pattern="[0-9]+">
@@ -56,17 +55,19 @@
       <label [ngClass]="{'label':true,'full':country.value!=''}">Country:</label>
       <div *ngIf="country.invalid && ( country.touched || submitted )" class="myAlert">
         <div *ngIf="country.errors.required">Country is required.</div>
-        <div *ngIf="country.errors.validCountry">Country is not exist</div> 
+        <div *ngIf="country.errors.validCountry">Country is not exist</div>
       </div>
     </div>
 
     <div class="group">
-        <label for="demo_box_2" name="demo_lbl_2" class="css-label label">Is Male:</label>
-        <input type="checkbox" formControlName="isMale" />
-        <div class="myAlert">
-          <div *ngIf="!isMale.dirty && submitted">IsMale is required.</div>
+      <label for="demo_box_2" name="demo_lbl_2" class="css-label label">Is Male:</label>
+      <input type="checkbox" formControlName="isMale" />
+      <div class="myAlert">
+        <div *ngIf="isMale.invalid &&  submitted " class="myAlert">
+          <div *ngIf="isMale.errors.validIsMale">IsMale is required.</div>
         </div>
       </div>
+    </div>
     <div class="group">
       <div class="container-login100-form-btn">
         <div class="wrap-login100-form-btn">

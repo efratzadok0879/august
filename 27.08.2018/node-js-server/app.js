@@ -5,8 +5,8 @@ const app = express();
 const cors = require('cors')
 
 var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+    origin: 'https://glacial-river-87258.herokuapp.com/user-app',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 }
 
 app.use(cors(corsOptions))
@@ -26,28 +26,28 @@ app.post("/api/addUser", (req, res) => {
         fs.writeFileSync("user.json", JSON.stringify(cuurentList));
         res.status(201).send({ message: 'Created' });
     }
-    else{
+    else {
         console.log("bad");
         res.status(400);
     }
-   
+
 })
 app.param(['fileName'], function (req, res, next, value) {
     console.log(value);
     next();
-  });
+});
 app.get("/api/getList", (req, res) => {
-    let fileName=req.param('fileName')
-    let List=require(`./${fileName}.json`);
+    let fileName = req.param('fileName')
+    let List = require(`./${fileName}.json`);
     res.status(201).send(JSON.stringify(List));
-   
+
 })
 isValidUser = (user) => {
     return isValidId(user.id);
-        isValidAge(user.age) &&
-       isValidName(user.name) &&
-       isValidIsMale(user.isMale) &&
-       isValidCountry(user.country);
+    isValidAge(user.age) &&
+        isValidName(user.name) &&
+        isValidIsMale(user.isMale) &&
+        isValidCountry(user.country);
 }
 
 let isValidId = (id) => {

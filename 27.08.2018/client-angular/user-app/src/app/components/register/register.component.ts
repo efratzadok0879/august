@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
-import { User, ValidateId, ValidateCountry, UserService, CountryService } from '../../imports';
+import { User, ValidateId, ValidateCountry,ValidateIsMale, UserService, CountryService } from '../../imports';
 
 @Component({
   selector: 'app-register',
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
       id: ['', ValidateId],
       name: [''],
       age: [''],
-      isMale: [''],
+      isMale: [undefined,ValidateIsMale],
       country: ['',ValidateCountry.createValidator(this.countries)]
     });
   }
@@ -69,15 +69,5 @@ export class RegisterComponent implements OnInit {
   get country() {
     return this.registerForm.get("country");
   }
-
-  ValidateCountry(control: AbstractControl) {
-
-    let country = control.value;
-    if (country!= undefined && country != null) {         
-            if(this.countries.indexOf(country))
-            return { validCountry: true };
-    }
-    return null;
-}
 
 }

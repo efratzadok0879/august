@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CountryService {
-  basicURL="https://glacial-river-87258.herokuapp.com/api";
+
+  //basicURL="http://localhost:3500/api";
+   basicURL="https://glacial-river-87258.herokuapp.com/api";
   constructor(private httpClient: HttpClient) { }
 
   getAllCountries(): Observable<any> {
