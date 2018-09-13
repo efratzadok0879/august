@@ -28,16 +28,16 @@ export class TimeRangeInputComponent implements OnInit {
   callNext() {
     let startVal: string = this.dateRangeGroup.get("start").value;
     let endVal: string = this.dateRangeGroup.get("end").value;
-    if (startVal && endVal&&this.isValideRange())
+    if (startVal && endVal && this.isValideRange())
       this.packageService.DateRangeSubject.next({ start: startVal, end: endVal });
 
   }
-  
+
   isValideRange(): boolean {
-    if(this.dateRangeGroup.controls['start'].value!=null&&this.dateRangeGroup.controls['end'].value!=null)
+    if (this.dateRangeGroup.controls['start'].value != null && this.dateRangeGroup.controls['end'].value != null)
       return new Date(this.dateRangeGroup.controls['start'].value) <= new Date(this.dateRangeGroup.controls['end'].value);
- return true;
-    }
+    return true;
+  }
 
 }
 

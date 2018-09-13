@@ -19,26 +19,30 @@ export class PackageListComponent implements OnInit {
     );
     this.packageService.DateRangeSubject.subscribe(
       {
-        next: (range:{start:string,end:string}) => this.getDownloadAmounts(range)
+        next: (range: { start: string, end: string }) => this.getDownloadAmounts(range)
       }
     );
 
   }
   getAllPackages(packageInputVal: string) {
-    this.packageService.getAllPackages(packageInputVal).subscribe(
-      res => {  
-        this.packages=[];
-        res.forEach(p=>{
-          this.packages.push({name:p.package.name});
-        })
-        this.packageService.serviceSubject.next();
-      }
-    );
+    if (packageInputVal) {
+      this.packageService.getAllPackages(packageInputVal).subscribe(
+        res => {
+          this.packages = [];
+          res.forEach(p => {
+            this.packages.push({ name: p.package.name });
+          })
+          this.packageService.serviceSubject.next();
+        }
+      );
+    }
+    else
+    this.packages=[];
   }
-  getDownloadAmounts(range:{start:string,end:string}){
-    this.packages.forEach(p=>{
-      this.packageService.getDownloadAmounts(range.start,range.end,p.name).subscribe(
-        res=>p.downloads=res.downloads
+  getDownloadAmounts(range: { start: string, end: string }) {
+    this.packages.forEach(p => {
+      this.packageService.getDownloadAmounts(range.start, range.end, p.name).subscribe(
+        res => p.downloads = res.downloads
       );
     });
   }

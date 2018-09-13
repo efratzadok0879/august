@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PackageService } from '../../shared/services/package.service';
 
@@ -17,7 +17,6 @@ export class PackageInputComponent implements OnInit {
   ngOnInit() {
   }
   callNaxt() {
-    if (this.packageInput.value)
       this.packageService.NameSubject.next(this.packageInput.value);
   }
 }
